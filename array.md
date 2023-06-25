@@ -1,6 +1,7 @@
 https://leetcode.cn/problems/maximum-length-of-repeated-subarray/solution/wu-li-jie-fa-by-stg-2/
 https://www.geeksforgeeks.org/check-whether-an-array-is-subarray-of-another-array/
 https://leetcode.cn/problems/maximum-length-of-repeated-subarray/solution/hua-dong-chuang-kou-python-by-downupzi-ihfv/
+https://leetcode.cn/problems/maximum-length-of-repeated-subarray/solution/hua-dong-chuang-kou-de-jian-hua-ban-by-m-d00w/
 
 ```python
 # Python3 program to check if an array is
@@ -73,4 +74,21 @@ def findLength(nums1, nums2) -> int:
     for i in range(n1): 
         getLength(i, 0)
     return res
+```
+
+```python
+def findLength(nums1, nums2):
+    m = len(nums1)
+    n = len(nums2)
+    result = 0
+
+    for diff in range(-n+1,m,1):
+        count = 0
+        for index in range(max(0,diff),min(m,n+diff)):
+            if nums1[index] == nums2[index - diff]:
+                count += 1
+            else:
+                count = 0
+            result = max(count,result)
+    return result
 ```
